@@ -32,7 +32,7 @@ parse_dates = [
 
 def run():
     year=2021
-    month=1
+    month='01'
     pg_user='root'
     pg_password='root'
     pg_host='localhost'
@@ -41,7 +41,10 @@ def run():
     chunksize=10000
     target_table='yellow_taxi_data'
     prefix="https://github.com/DataTalksClub/nyc-tlc-data/releases/download/yellow/"
-    url= f"{prefix}/yellow_trip_data_{year}-{month}.csv.gz"
+    url= f"{prefix}yellow_tripdata_{year}-{month}.csv.gz"
+    #'https://github.com/DataTalksClub/nyc-tlc-data/releases/download/yellow/yellow_tripdata_2021-01.csv.gz'
+    
+    print(f'URL is: {url}')
     engine = create_engine(f'postgresql://{pg_user}:{pg_password}@{pg_host}:{pg_port}/ny_taxi')
     
     df_iter=pd.read_csv(
